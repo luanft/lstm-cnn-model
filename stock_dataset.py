@@ -198,7 +198,7 @@ def load_lstm_dataset(window_size, predict_size, path_to_csv):
         output_types=(tf.float64, tf.float16),
         output_shapes=(tf.TensorShape((29, 2)), tf.TensorShape([]))
     )
-    return dataset.take(-1)
+    return dataset
 
 
 def load_cnn_dataset(window_size, predict_size, fn_draw_chart, path_to_csv, dataset_type):
@@ -211,7 +211,8 @@ def load_cnn_dataset(window_size, predict_size, fn_draw_chart, path_to_csv, data
         output_types=(tf.float64, tf.float16),
         output_shapes=(tf.TensorShape((112, 112, 3)), tf.TensorShape([]))
     )
-    return dataset.take(-1)
+    return dataset
+    # return dataset.take(-1)
 
 
 def load_lstm_cnn_dataset(window_size, predict_size, fn_draw_chart, path_to_csv, dataset_type):
@@ -223,7 +224,7 @@ def load_lstm_cnn_dataset(window_size, predict_size, fn_draw_chart, path_to_csv,
         ),
         output_types=((tf.float64, tf.float32), tf.float16),
         output_shapes=((tf.TensorShape([29, 2]), tf.TensorShape((112, 112, 3))), tf.TensorShape([]))
-    ).take(10000)
+    )
     return dataset
 
 if __name__ == "__main__":
